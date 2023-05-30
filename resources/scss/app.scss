@@ -1,0 +1,40 @@
+@import '~bootstrap/scss/bootstrap';
+
+
+
+body {
+    display: flex;
+    flex-direction: column;
+
+
+    .mycontainer {
+        height: 100%;
+
+        .sidebar {
+
+            width: 20%;
+        }
+
+        .content {
+            width: 80%;
+        }
+    }
+}
+
+#app {
+
+
+    .mycontainer {
+
+        height: 100%;
+
+        .sidebar {
+
+            width: 20%;
+        }
+
+        .content {
+            width: 80%;
+        }
+    }
+}
