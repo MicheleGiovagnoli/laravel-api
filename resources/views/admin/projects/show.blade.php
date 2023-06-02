@@ -5,6 +5,7 @@
     <table class="table" style="height:100vh">
         <div class="container">
             <div class="card">
+                <img src="{{ asset('storage/' . $project->cover_image) }}" class="card-img-top">
                 <div class="card-body">
 
                     <h5 class="card-title">{{ $project->title }}</h5>

@@ -1,13 +1,18 @@
 @extends('layouts.admin')
 
 @section('content')
-    <form method="POST" action="{{ route('admin.projects.store') }}" style="height:100vh">
+    <form method="POST" action="{{ route('admin.projects.store') }}" style="height:100vh" enctype="multipart/form-data">
         @csrf
 
         {{-- TITOLO --}}
         <div class="mb-3">
             <label for="title" class="form-label">Titolo</label>
-            <input type="text" class="form-control" id="title" name="title">
+            <input @error('title') is-invalid @enderror type="text" class="form-control" id="title" name="title">
+            @error('title')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
 
         {{-- CONTENUTO --}}
@@ -50,6 +55,18 @@
                 <br>
             @endforeach
             @error('technologies')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+
+        {{-- IMMAGINE --}}
+        <div class="mb-3">
+            <label for="cover_image" class="form-label">Seleziona immagine di copertina</label>
+            <input type="file" class="form-control @error('cover_image') is-invalid @enderror " id="cover_image"
+                name="cover_image">
+            @error('cover_image')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>

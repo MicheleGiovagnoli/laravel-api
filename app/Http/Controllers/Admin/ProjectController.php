@@ -8,7 +8,7 @@ use App\Models\Project;
 use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -51,6 +51,14 @@ class ProjectController extends Controller
         if ($checkProject) {
             return back()->withInput()->withErrors(['slug' => 'Impossibile creare lo slug per questo Project, cambia il titolo']);
         }
+
+        //Gestione delle immagini
+        //Verifico se all'interno della request sia presente anche l'immagine
+        if ($request->hasFile('cover_image')) {
+            $path = Storage::put('cover', $request->cover_image);
+            $validated_data['cover_image'] = $path;
+        }
+
         $newProject = Project::create($validated_data);
 
         //creo collegamento tra il project e gli id del techonlogies
@@ -79,7 +87,6 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        $projects = Project::all();
         $types = Type::all();
         $technologies = Technology::all();
         return view('admin.projects.edit', compact('project', 'types', 'technologies'));
@@ -102,6 +109,12 @@ class ProjectController extends Controller
         if ($checkProject) {
             return back()->withInput()->withErrors(['slug' => 'Impossibile creare lo slug per questo Project, cambia il titolo']);
         }
+        //gestione delle immagini
+        if ($request->hasFile('cover_image')) {
+            $path = Storage::put('cover', $request->cover_image);
+            $validated_data['cover_image'] = $path;
+        }
+
 
         //prendo i dati che entrano nella request 
         $project->technologies()->sync($request->technologies);

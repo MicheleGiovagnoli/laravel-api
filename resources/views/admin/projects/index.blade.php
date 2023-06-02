@@ -7,6 +7,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Title</th>
                 <th scope="col">Content</th>
+                <th scope="col">Image</th>
                 <th scope="col">Slug</th>
                 <th scope="col">Tipo</th>
                 <th scope="col">Tecnologia</th>
@@ -21,6 +22,12 @@
                     <td>{{ $project->id }}</td>
                     <td>{{ $project->title }}</td>
                     <td>{{ $project->content }}</td>
+                    <td>
+                        @if ($project->cover_image)
+                            <img class="img-thumbnail" src="{{ asset('storage/' . $project->cover_image) }}"
+                                alt="{{ $project->title }}" />
+                        @endif
+                    </td>
                     <td>{{ $project->slug }}</td>
                     <td>{{ $project->type ? $project->type->name : 'Nessun tipo' }}</td>
                     <td>
