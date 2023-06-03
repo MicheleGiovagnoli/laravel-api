@@ -27,6 +27,8 @@
                 @include('partials.sidebar')
             </div>
             <div class="content container">
+                @include('partials.messages')
+                @include('partials.errors')
                 @yield('content')
             </div>
         </div>

@@ -7,7 +7,8 @@
         {{-- TITOLO --}}
         <div class="mb-3">
             <label for="title" class="form-label">Titolo</label>
-            <input @error('title') is-invalid @enderror type="text" class="form-control" id="title" name="title">
+            <input type="text" class="form-control" @error('title') is-invalid @enderror id="title" name="title"
+                value="{{ old('title') }}">
             @error('title')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -18,7 +19,8 @@
         {{-- CONTENUTO --}}
         <div class="mb-3">
             <label for="content" class="form-label">Contenuto</label>
-            <input @error('content') is-invalid @enderror type="text" class="form-control" id="content" name="content">
+            <input @error('content') is-invalid @enderror type="text" class="form-control" id="content" name="content"
+                value="{{ old('content') }}">
             @error('content')
                 <div class="invalid-feedback">
                     {{ $message }}
