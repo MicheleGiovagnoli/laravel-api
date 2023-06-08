@@ -22,11 +22,11 @@
 <body>
     <div id="app" class="bg-dark">
         @include('partials.header')
-        <div class="mycontainer d-flex container bg-white">
+        <div class="mycontainer d-flex container p-0 bg-white">
             <div class="sidebar">
                 @include('partials.sidebar')
             </div>
-            <div class="content container">
+            <div class="container">
                 @include('partials.messages')
                 @include('partials.errors')
                 @yield('content')

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <table class="table p-5">
+    <table class="table table-striped-columns p-5">
         <thead>
             <tr>
                 <th scope="col">#</th>
